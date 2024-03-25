@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>meshcentral</Name>
+  <Repository>typhonragewind/meshcentral</Repository>
+  <Registry>https://hub.docker.com/r/typhonragewind/meshcentral</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://myunraid.tld/</Support>
+  <Project>https://meshcentral.com/</Project>
+  <Overview>
+      The open source, multi-platform, self-hosted, feature packed web site for remote device management.
+</Overview>
+  <Category/>
+  <WebUI>https://[IP]:[PORT:8086]</WebUI>
+  <TemplateURL>https://github.com/twistedsanity/unraid-docker-templates/blob/main/my-meshcentral.xml</TemplateURL>
+  <Icon>https://github.com/twistedsanity/unraid-docker-templates/blob/main/meshcentral-logo.png?raw=true</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled></DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>
+      The open source, multi-platform, self-hosted, feature packed web site for remote device management.
+</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8086</HostPort>
+        <ContainerPort>443</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/meshcentral/data</HostDir>
+      <ContainerDir>/opt/meshcentral/meshcentral-data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/meshcentral/user_files </HostDir>
+      <ContainerDir>/opt/meshcentral/meshcentral-files </ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/meshcentral/backups </HostDir>
+      <ContainerDir>/opt/meshcentral/meshcentral-backups </ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>mesh.yourDomain.tld</Value>
+      <Name>HOSTNAME</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>192.168.1.1</Value>
+      <Name>REVERSE_PROXY</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>443</Value>
+      <Name>REVERSE_PROXY_TLS_PORT</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>false</Value>
+      <Name>IFRAME</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>false</Value>
+      <Name>ALLOW_NEW_ACCOUNTS</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>true</Value>
+      <Name>WEBRTC</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>backup_password_replace_this</Value>
+      <Name>BACKUPS_PW</Name>
+      <Mode/>
+    </Variable>
+        <Variable>
+      <Value>24</Value>
+      <Name>BACKUP_INTERVAL</Name>
+      <Mode/>
+    </Variable>
+        <Variable>
+      <Value>10</Value>
+      <Name>BACKUP_KEEP_DAYS</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="443" Target="443" Default="" Mode="tcp" Description="Container Port: 443" Type="Port" Display="always" Required="false" Mask="false">8086</Config>
+  <Config Name="HOSTNAME" Target="HOSTNAME" Default="" Mode="" Description="Container Variable: HOSTNAME" Type="Variable" Display="always" Required="false" Mask="false">mesh.yourDomain.tld</Config>
+  <Config Name="REVERSE_PROXY" Target="REVERSE_PROXY" Default="" Mode="" Description="Container Variable: REVERSE_PROXY" Type="Variable" Display="always" Required="false" Mask="false">192.168.1.1</Config>
+  <Config Name="REVERSE_PROXY_TLS_PORT" Target="REVERSE_PROXY_TLS_PORT" Default="" Mode="" Description="Container Variable: REVERSE_PROXY_TLS_PORT" Type="Variable" Display="always" Required="false" Mask="false">443</Config>
+  <Config Name="IFRAME" Target="IFRAME" Default="" Mode="" Description="Container Path: IFRAME" Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="ALLOW_NEW_ACCOUNTS" Target="ALLOW_NEW_ACCOUNTS" Default="" Mode="" Description="Container Variable: ALLOW_NEW_ACCOUNTS" Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="WEBRTC" Target="WEBRTC" Default="" Mode="" Description="Container Variable: WEBRTC" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="/opt/meshcentral/meshcentral-data" Target="/opt/meshcentral/meshcentral-data" Default="" Mode="rw" Description="Container Path: /opt/meshcentral/meshcentral-data" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/meshcentral/data</Config>
+  <Config Name="/opt/meshcentral/meshcentral-files" Target="/opt/meshcentral/meshcentral-files " Default="" Mode="rw" Description="Container Variable: /opt/meshcentral/meshcentral-files " Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/meshcentral/user-files </Config>
+  <Config Name="/opt/meshcentral/meshcentral-backups" Target="/opt/meshcentral/meshcentral-backups " Default="" Mode="rw" Description="Container Variable: /opt/meshcentral/meshcentral-backups " Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/meshcentral/backups </Config>
+  <Config Name="BACKUPS_PW" Target="BACKUPS_PW" Default="" Mode="" Description="password for the autobackup function" Type="Variable" Display="always" Required="false" Mask="false">backup_password_replace_this</Config>
+  <Config Name="BACKUP_INTERVAL" Target="BACKUP_INTERVAL" Default="" Mode="" Description="Interval in hours for the autobackup function" Type="Variable" Display="always" Required="false" Mask="false">24</Config>
+  <Config Name="BACKUP_KEEP_DAYS" Target="BACKUP_KEEP_DAYS" Default="" Mode="" Description="number of days of backups the function keeps" Type="Variable" Display="always" Required="false" Mask="false">10</Config>
+</Container>
